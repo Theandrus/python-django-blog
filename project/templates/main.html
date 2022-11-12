@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} Main page {% endblock %}
+
+{% block content %}
+<section class="list">
+  <a href="{% url 'users:show_users' %}" class="users">Users</a>
+  <a href="{% url 'users:show_groups' %}" class="groups">Groups</a>
+</section>
+
+{% endblock %}

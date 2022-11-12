@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Users {% endblock %}
+
+{% block content %}
+
+<h3>Users</h3>
+
+  {% if users %}
+
+        {% for user in users %}
+        <ul>
+            <li>
+                <a>{{user.user_name}}</a>
+                <a>{{user.created}}</a>
+                <a>{{user.group}}</a>
+                <a href = "{% url 'users:delete_user' user.slug  %}" class = "delete"  methods="POST"><input type=button name="delete" value='Delete'></a>
+                <a href = "{% url 'users:edit_page_users' user.slug  %}" class = "edit"  methods="GET"><input type=button name="edit" value='Edit'></a>
+            </li>
+        </ul>
+        {% endfor %}
+
+    {% else %}
+
+        <a>The users were not found(</a>
+
+    {% endif %}
+
+<a href="{% url 'users:add_page_users'  %}">
+    <button type="submit" class="add_button" >ADD</button>
+</a>
+
+{% endblock %}

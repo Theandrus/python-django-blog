@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit group{% endblock %}
+
+{% block content %}
+
+<h4>Edit the group</h4>
+<form action="{% url 'users:groups_update' group.slug %}" method="post">
+    {% csrf_token %}
+    <div class="area">
+        <p>Group name: {{group.group_name}}</p><textarea name="Name" required="" placeholder="User's name" cols="15" rows="1"></textarea>
+        <p>Slug: {{group.slug}}</p> <textarea name="Slug" required="" placeholder="Slug" cols="10" rows="1"></textarea>
+        <p>Group_description: {{group.group_description}}</p><textarea name="Group description" required="" placeholder="Group description" cols="45" rows="1"></textarea>
+    </div>
+    <button type="submit" class="add_post">Update</button>
+</form>
+
+{% endblock %}

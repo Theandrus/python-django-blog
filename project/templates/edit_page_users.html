@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit user{% endblock %}
+
+{% block content %}
+
+<h4>Edit the user</h4>
+<form action="{% url 'users:users_update' user.slug %}" method="post">
+    {% csrf_token %}
+    <div class="area">
+        <p>Name: {{user.user_name}}</p><textarea name="Name" required="" placeholder="User's name" cols="15" rows="1"></textarea>
+        <p>Slug: {{user.slug}}</p> <textarea name="Slug" required="" placeholder="Slug" cols="10" rows="1"></textarea>
+        <p>Group: {{user.group}}</p>
+        <select name="Group">
+                {% if groups %}
+                {% for group in groups %}
+                    <option>{{group.group_name}}</option>
+                {% endfor %}
+            {% endif %}}
+        </select>
+    </div>
+    <button type="submit" class="add_post">Update</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %} Groups {% endblock %}
+
+{% block content %}
+
+<h3>Groups</h3>
+
+  {% if groups %}
+
+        {% for group in groups %}
+        <ul>
+            <li>
+                <a>ID: {{group.id}}</a>
+                <a>GROUP: {{group.group_name}}</a>
+                <a>DESCRIPTION:{{group.group_description}}</a>
+                <a href = "{% url 'users:delete_group' group.slug  %}" class = "delete"  methods="POST"><input type=button name="delete" value='Delete'></a>
+                <a href = "{% url 'users:edit_page_groups' group.slug  %}" class = "edit"  methods="GET"><input type=button name="edit" value='Edit'></a>
+            </li>
+        </ul>
+        {% endfor %}
+
+    {% else %}
+
+        <a>The groups were not found(</a>
+
+    {% endif %}
+
+<a href="{% url 'users:add_page_groups'  %}">
+    <button type="submit" class="add_button" >ADD</button>
+</a>
+
+{% endblock %}
